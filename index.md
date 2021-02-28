@@ -1,10 +1,4 @@
-<div id="toc"></div>
 
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#toc').toc();
-});
-</script>
 
 ## Welcome to GitHub Pages
 
