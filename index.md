@@ -32,6 +32,11 @@ Para ello lanzamos cutadapt con los siguientes parámetros:
 
 cutadapt
 
+### 2. Alignment (STAR)
+
+### 3. Transcript filtering (STAR - fusion)
+
+
 
 ### Markdown
 
