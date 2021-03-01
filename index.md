@@ -27,14 +27,16 @@ Estas herramientas se podrían ejecutar a través de servidores Galaxy, que perm
 
 Configuramos CutAdapt para:
 
-
-Eliminar los adaptadores 
-Las secuencias por debajo del umbral de calidad establecido
-Eliminar todo aquel extremo de las con una calidad deficiente
+- Eliminar los adaptadores.
+- Eliminar toda aquella secuencia por debajo de una determinada longitud.
+- Eliminar todo aquel extremo 3' de las secuencias con una calidad deficiente (dado que es el extremo que suele presentar una calidad menor en Illumina).
+- Eliminar toda aquella lectura en la que no se ha encontrado adaptadores.
 
 Para ello lanzamos cutadapt con los siguientes parámetros:
 
-cutadapt
+cutadapt -a ADAPTER_FWD -A ADAPTER_REV -o out.1.fastq -p out.2.fastq reads.1.fastq reads.2.fastq -m 250 -M 250 -q 28 --discard-untrimmed
+
+<span style="color: red;">ajbdkabsdbjsadkbakdbja</span>
 
 ### 2. Alignment (STAR)
 
