@@ -45,6 +45,8 @@ cutadapt -a ADAPTER_FWD -A ADAPTER_REV -o out.1.fastq -p out.2.fastq reads.1.fas
 
 another test
 
+![image](/Images/Unknown.jpeg)
+
 ### 2. Alignment (STAR)
 
 ### 3. Transcript filtering (STAR - fusion)
