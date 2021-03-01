@@ -38,11 +38,7 @@ Para ello lanzamos cutadapt con los siguientes parámetros:
 cutadapt -a ADAPTER_FWD -A ADAPTER_REV -o out.1.fastq -p out.2.fastq reads.1.fastq reads.2.fastq -m 250 -M 250 -q 28 --discard-untrimmed
 ```
 
-
-```diff
-- this text is highlighted in green
-- this text is highlighted in red
-```
+another test
 
 ### 2. Alignment (STAR)
 
