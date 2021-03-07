@@ -38,9 +38,33 @@ Para ello lanzamos cutadapt con los siguientes parámetros:
 cutadapt -a ADAPTER_FWD -A ADAPTER_REV -o out.1.fastq -p out.2.fastq reads.1.fastq reads.2.fastq -m 250 -M 250 -q 28 --discard-untrimmed
 ```
 
-```diff
-+ este textito esta en rojo
-- este en azulito
+
+### 2. Alineamiento
+
+El siguiente paso consiste en el alineamiento de los fragmentos secuenciados con el genoma de referencia. Para ello no podemos utilizar un alineador tradicional, dado que los intrones harian muy dificil el proceso, al introducir sesgos en el genoma. Hay una serie de programas especializados en RNA seq, por ejemplo TopHat2, que parte del alineador Bowtie para posteriormente considerar los intrones en el proceso. 
+
+#### 2.1 Indexar genoma de referencia
+
+Es un proceso necesario para que Bowtie acceda de forma rápida al genoma de referencia. Para realizarlo introducimos el siguiente comenado:
+
+```markdown
+bowtie2-build -f Homo_sapiens.GRCh38.fa ihg38
+```
+Ello produce como salida archivos con extensión .bt2, que contienen las secuencias de referencia contra las que seran alineadas nuestros fragmentos. 
+
+#### Alienamiento
+
+Usamos el software TopHat2, que incluye una herramienta para la búsqueda de transcritos quiméricos ("--fusion-search"). Especificamos el genoma de referencia anotado (.gtf), el directorio donde TopHat2 guardará los resultados ("./aligment_output") y las lecturas de ambos sentidos (R1.fastq y R2.fastq).
+
+```markdown
+tophat -G ./hg38.gtf -o ./aligment_output ./ihg38 ./Sample1.R1.fastq ./Sample1.R2.fastq --fusion-search
+```
+### Filtrado de transcritos
+
+Utilizamos el programa TopHat-fusion-post para filtrar los posibles transcritos quiméricos candidatos. Es aconsejable repetir este proceso con distintos parámetros de filtrado. Lanzamos este comando en el directorio de salida de TopHat2:
+
+```markdown
+tophat-fusion-post --num-fusion-reads 1 --num-fusion-pairs 2 --num-fusion-both 5 ../ihg38
 ```
 
 another test
