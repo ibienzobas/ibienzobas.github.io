@@ -5,7 +5,6 @@ nav_order: 1
 has_children: true
 ---
 
-## Ejercicio 1
 
 ### 1. Quality Control (FastQC & Cut Adapt)
 
