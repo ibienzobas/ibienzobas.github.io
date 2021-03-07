@@ -59,15 +59,18 @@ Usamos el software TopHat2, que incluye una herramienta para la búsqueda de tra
 ```markdown
 tophat -G ./hg38.gtf -o ./aligment_output ./ihg38 ./Sample1.R1.fastq ./Sample1.R2.fastq --fusion-search
 ```
+De entre todos los archivos generados, podemos echar un vistazo al archivo fusion.out para encontrar los posibles transcritos quiméricos.
+
 ### Filtrado de transcritos
 
-Utilizamos el programa TopHat-fusion-post para filtrar los posibles transcritos quiméricos candidatos. Es aconsejable repetir este proceso con distintos parámetros de filtrado. Lanzamos este comando en el directorio de salida de TopHat2:
+Si se desea, posteriormente se puede usar TopHat-fusion-post para filtrar transcritos quiméricos, del total de candidatos generados en el paso anterior. Es aconsejable repetir este proceso con distintos parámetros de filtrado. Lanzamos este comando en el directorio de salida de TopHat2:
 
 ```markdown
 tophat-fusion-post --num-fusion-reads 1 --num-fusion-pairs 2 --num-fusion-both 5 ../ihg38
 ```
 
-another test
+Los transcritos quiméricos finales podran ser encontrados en los archivos result.txt o result.html.
+
 
 ![image](/Unknown.jpeg)
 
